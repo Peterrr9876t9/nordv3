@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claim your $500 Nordstrom Gift Card</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-display {
+        font-family: 'Outfit', sans-serif;
+      }
+      .fade-transition {
+        transition: opacity 300ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .toast-enter {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+      .toast-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .toast-exit {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+      }
+    </style>
+  </head>
+  <body class="bg-[#F4F4F6] text-slate-800 min-h-screen flex flex-col items-center justify-start py-8 px-4 relative overflow-x-hidden select-none">
+
+    <!-- 1. TOP CLAIMANT NOTIFICATION TOAST -->
+    <div class="w-full max-w-md h-20 relative mb-6 flex justify-center z-40">
+      <div id="claimant-toast" class="absolute bg-white shadow-lg rounded-full px-5 py-2.5 flex items-center gap-3.5 border border-slate-100 max-w-[90%] sm:max-w-md fade-transition toast-enter">
+        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-xl shrink-0">
+          🎉
+        </div>
+        <div class="flex flex-col min-w-0">
+          <p class="text-xs sm:text-[13px] leading-tight text-slate-700">
+            <span id="toast-name" class="font-bold font-display" style="color: #707070">Claire V.</span> claimed a <span class="font-semibold text-rose-600" id="toast-amount">$500</span>!
+          </p>
+          <p id="toast-meta" class="text-[11px] text-slate-400 mt-0.5">
+            New York, NY • just now
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. MAIN PROMOTIONAL CARD -->
+    <main id="promo-card" class="w-full max-w-[430px] bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-6 sm:p-8 flex flex-col items-stretch text-center z-10">
+      
+      <!-- BRAND LOGO -->
+      <div class="relative mb-6">
+        
+      <svg class="w-68 h-16 mx-auto select-none" viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="140" y="44" font-family="'Optima', 'Cinzel', 'Playfair Display', Georgia, serif" font-weight="700" font-size="30" fill="#111111" text-anchor="middle" letter-spacing="4">NORDSTROM</text>
+        <line x1="60" y1="52" x2="220" y2="52" stroke="#111111" stroke-width="1" />
+        <text x="140" y="64" font-family="'Inter', sans-serif" font-weight="700" font-size="8" fill="#707070" text-anchor="middle" letter-spacing="4">DESIGNER &amp; LUXURY CLUB</text>
+      </svg>
+        <p class="text-[11px] tracking-wide text-slate-400 font-bold font-display uppercase mt-3 break-words leading-relaxed px-4">
+          Nordstrom Fashion & Designer Rewards
+        </p>
+      </div>
+
+      <!-- PROMOTIONAL VALUE -->
+      <div class="mb-6">
+        <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight font-display flex items-center justify-center leading-none" style="color: #707070">
+          $500
+        </h1>
+        <p class="text-xs sm:text-sm font-black tracking-[0.15em] font-display uppercase mt-1" style="color: #111111">
+          Nordstrom Gift Card
+        </p>
+      </div>
+
+      <!-- STEP CHECKLIST CONTAINER -->
+      <div class="border border-slate-100 rounded-2xl overflow-hidden bg-white text-left mb-6 divide-y divide-slate-100">
+        <!-- Step 1 -->
+        <div class="p-4 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">1</span>
+            <span class="text-slate-700 font-medium text-sm sm:text-[15px]">Click The Button Below</span>
+          </div>
+          <div class="w-5 h-5 rounded bg-emerald-500 flex items-center justify-center shrink-0">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">2</span>
+            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Enter Your Basic Info</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">3</span>
+            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Complete 3-5 Deals</span>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">4</span>
+            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Claim Your Reward</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLAIM BUTTON -->
+      <div class="mb-3">
+        <button id="cta-button" class="w-full text-white py-4 px-6 rounded-2xl font-black font-display text-sm sm:text-base tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer group" style="background-color: #707070">
+          Claim Your Gift Card
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- SUB-BUTTON MUTED LABEL -->
+      <p class="text-xs text-slate-400 font-medium mb-6">
+        No credit card required
+      </p>
+
+      <!-- 3. TESTIMONIALS SLIDER -->
+      <div class="border border-slate-100 rounded-2xl p-5 bg-slate-50 text-left relative min-h-[140px] flex flex-col justify-between">
+        <div id="testimonial-content" class="fade-transition opacity-100">
+          <div class="flex items-center gap-3 mb-2.5">
+            <div id="testimonial-initial" class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0 bg-black">C</div>
+            <div class="flex items-center gap-1.5">
+              <span id="testimonial-name" class="font-bold text-slate-800 text-[14px]">Claire V.</span>
+              <span class="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <p id="testimonial-text" class="text-slate-600 italic text-xs sm:text-[13px] leading-relaxed pl-1">
+            "Treated myself to luxury fragrances and designer heels with my $500 Nordstrom voucher!"
+          </p>
+        </div>
+
+        <!-- DOT CONTROLS -->
+        <div class="flex justify-center gap-2 mt-4" id="testimonial-dots"></div>
+      </div>
+
+      <!-- Divider -->
+      <hr class="border-slate-100 my-6" />
+
+      <!-- 4. SECURE AND ENCRYPTED BADGES (Omitted Official Badge under testimonials per prompt request) -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="flex flex-col items-center justify-center text-center">
+          <div class="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center mb-1 text-slate-500">
+            <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="text-[10px] font-black tracking-wider text-slate-400 uppercase">Secure</span>
+        </div>
+
+        <div class="flex flex-col items-center justify-center text-center">
+          <div class="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center mb-1 text-slate-500">
+            <svg class="w-4.5 h-4.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <span class="text-[10px] font-black tracking-wider text-slate-400 uppercase">Encrypted</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- 5. FINE PRINT LEGAL FOOTER -->
+    <footer class="w-full max-w-sm text-center mt-6 px-4">
+      <p class="text-[10px] leading-relaxed text-slate-400 font-medium">
+        This is a promotional offer. Your information is protected with 256-bit SSL encryption. Terms & Conditions apply. Must be 18+ to participate.
+      </p>
+    </footer>
+
+    <!-- 6. INTERACTIVE CLAIM MODAL -->
+    <div id="quiz-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 w-full max-w-[400px] shadow-2xl relative border border-slate-100 overflow-hidden">
+        <!-- Close Button -->
+        <button onclick="closeQuizModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors p-1.5 rounded-full hover:bg-slate-50 cursor-pointer outline-none border-none bg-transparent z-10" aria-label="Close modal">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Question Steps -->
+        <div id="quiz-step-0" class="">
+          <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4 text-rose-500">
+            ✨
+          </div>
+          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 1 of 3</h3>
+          <p class="text-slate-600 text-sm mb-6">Are you a fan of Nordstrom products?</p>
+          <div class="flex flex-col gap-3">
+            <button onclick="nextStep(1)" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Yes, Absolutely!</button>
+            <button onclick="nextStep(1)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Sometimes / Occasionally</button>
+          </div>
+        </div>
+
+        <div id="quiz-step-1" class="hidden">
+          <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-blue-500">
+            🏅
+          </div>
+          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 2 of 3</h3>
+          <p class="text-slate-600 text-sm mb-6">How often do you purchase new items from Nordstrom?</p>
+          <div class="flex flex-col gap-3">
+            <button onclick="nextStep(2)" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Every Month</button>
+            <button onclick="nextStep(2)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">During Holidays / Birthdays</button>
+            <button onclick="nextStep(2)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Rarely / First Time</button>
+          </div>
+        </div>
+
+        <div id="quiz-step-2" class="hidden">
+          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4 text-amber-500">
+            🎉
+          </div>
+          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 3 of 3</h3>
+          <p class="text-slate-600 text-sm mb-6">Who will be enjoying this $500 Gift Card?</p>
+          <div class="flex flex-col gap-3">
+            <button onclick="runValidation()" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Myself / Personal use</button>
+            <button onclick="runValidation()" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Family / Friend gift</button>
+          </div>
+        </div>
+
+        <!-- Validating/Loading -->
+        <div id="quiz-step-3" class="hidden flex flex-col items-center justify-center text-center py-6">
+          <div class="relative w-20 h-20 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90">
+              <circle cx="40" cy="40" r="34" class="stroke-slate-100 fill-none stroke-[6]"></circle>
+              <circle id="loader-progress-circle" cx="40" cy="40" r="34" class="fill-none stroke-[6] transition-all duration-150" stroke-dasharray="213" stroke-dashoffset="213" style="stroke: #707070"></circle>
+            </svg>
+            <span id="loader-percent" class="absolute font-black text-slate-700 text-sm font-mono">0%</span>
+          </div>
+          <h3 class="text-lg font-black text-slate-800 font-display mb-1.5">Verifying Allocation</h3>
+          <p id="loader-status" class="text-slate-400 text-xs font-mono tracking-wide h-4">Analyzing responses...</p>
+        </div>
+
+        <!-- Success redirection -->
+        <div id="quiz-step-4" class="hidden text-center relative">
+          <div class="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mb-4 text-emerald-500 mx-auto">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black text-emerald-600 font-display mb-2">Code Reserved!</h3>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+            We've allocated a <span class="font-bold text-slate-800">$500 Nordstrom Promo Code</span> for you! Complete the last validation steps to retrieve it.
+          </p>
+          <a href="https://linkthem.net/aff_c?offer_id=1325&aff_id=179812&source=v3" target="_blank" rel="noopener noreferrer" class="w-full text-white font-black py-4 px-6 rounded-xl hover:opacity-90 active:scale-[0.99] transition-all text-sm uppercase tracking-widest inline-flex items-center justify-center gap-2 shadow-lg mb-4" style="background-color: #707070">
+            CONTINUE TO CLAIM
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button onclick="restartQuiz()" class="mt-4 text-xs font-semibold text-slate-400 hover:text-slate-600 underline cursor-pointer bg-transparent border-none outline-none block mx-auto">
+            Start over
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Block -->
+    <script>
+      // 1. Claimant Toast cycle
+      const claimants = [{"name":"Claire V.","city":"New York, NY","time":"just now","amount":"$500"},{"name":"Hannah P.","city":"San Francisco, CA","time":"2 mins ago","amount":"$500"},{"name":"Morgan L.","city":"Miami, FL","time":"4 mins ago","amount":"$500"}] || [];
+      let currentClaimantIdx = 0;
+      const toastEl = document.getElementById('claimant-toast');
+      const toastName = document.getElementById('toast-name');
+      const toastMeta = document.getElementById('toast-meta');
+
+      function updateToast() {
+        if (!toastEl || !toastName || !toastMeta || !claimants.length) return;
+        toastEl.classList.remove('toast-active');
+        toastEl.classList.add('toast-exit');
+        
+        setTimeout(() => {
+          const c = claimants[currentClaimantIdx];
+          if (c) {
+            toastName.innerText = c.name;
+            toastMeta.innerText = c.city + ' • ' + c.time;
+          }
+          
+          toastEl.classList.remove('toast-exit');
+          toastEl.classList.add('toast-active');
+          
+          currentClaimantIdx = (currentClaimantIdx + 1) % claimants.length;
+        }, 300);
+      }
+      
+      // Kick off toast rotation
+      if (toastEl && toastName && toastMeta && claimants.length) {
+        updateToast();
+        setInterval(updateToast, 5000);
+      }
+
+      // 2. Testimonial cycle
+      const testimonials = [{"initial":"C","name":"Claire V.","text":"Treated myself to luxury fragrances and designer heels with my $500 Nordstrom voucher!","color":"bg-black"},{"initial":"H","name":"Hannah P.","text":"Scanned at Nordstrom checkout smoothly. Extremely fast digital reward delivery.","color":"bg-neutral-800"},{"initial":"M","name":"Morgan L.","text":"Verified without hassle. Used it online for free doorstep delivery!","color":"bg-black"}] || [];
+      let currentTestimonialIdx = 0;
+      const testimonialContent = document.getElementById('testimonial-content');
+      const testimonialInitial = document.getElementById('testimonial-initial');
+      const testimonialName = document.getElementById('testimonial-name');
+      const testimonialText = document.getElementById('testimonial-text');
+      const dotsContainer = document.getElementById('testimonial-dots');
+
+      // Populate dots
+      if (dotsContainer && testimonials.length) {
+        testimonials.forEach((_, idx) => {
+          const dot = document.createElement('button');
+          dot.className = 'w-2.5 h-2.5 rounded-full transition-colors bg-slate-200';
+          dot.onclick = () => showTestimonial(idx);
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      function showTestimonial(idx) {
+        if (!testimonialContent || !testimonialInitial || !testimonialName || !testimonialText || !testimonials.length) return;
+        currentTestimonialIdx = idx;
+        testimonialContent.style.opacity = '0';
+        
+        setTimeout(() => {
+          const t = testimonials[currentTestimonialIdx];
+          if (t) {
+            testimonialInitial.innerText = t.initial;
+            testimonialInitial.className = "w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0 " + (t.color || "bg-indigo-600");
+            testimonialName.innerText = t.name;
+            testimonialText.innerText = '"' + t.text + '"';
+          }
+          
+          // update dot styles
+          if (dotsContainer) {
+            Array.from(dotsContainer.children).forEach((dot, dotIdx) => {
+              if (dotIdx === currentTestimonialIdx) {
+                dot.className = 'w-2.5 h-2.5 rounded-full transition-colors';
+                dot.style.backgroundColor = "#111111";
+              } else {
+                dot.className = 'w-2.5 h-2.5 rounded-full transition-colors bg-slate-200';
+                dot.style.backgroundColor = '';
+              }
+            });
+          }
+          
+          testimonialContent.style.opacity = '1';
+        }, 200);
+      }
+
+      if (testimonialContent && testimonialInitial && testimonialName && testimonialText && testimonials.length) {
+        showTestimonial(0);
+        setInterval(() => {
+          const nextIdx = (currentTestimonialIdx + 1) % testimonials.length;
+          showTestimonial(nextIdx);
+        }, 6000);
+      }
+
+      // 3. Quiz Modal Interactivity
+      const ctaBtn = document.getElementById('cta-button');
+      const quizModal = document.getElementById('quiz-modal');
+      
+      ctaBtn.onclick = (e) => {
+        e.preventDefault();
+        quizModal.classList.remove('hidden');
+      };
+
+      // Close modal on background click
+      if (quizModal) {
+        quizModal.onclick = (e) => {
+          if (e.target === quizModal) {
+            closeQuizModal();
+          }
+        };
+      }
+
+      function nextStep(step) {
+        document.getElementById('quiz-step-' + (step - 1)).classList.add('hidden');
+        document.getElementById('quiz-step-' + step).classList.remove('hidden');
+      }
+
+      function closeQuizModal() {
+        document.getElementById('quiz-modal').classList.add('hidden');
+        resetQuizSteps();
+      }
+
+      function restartQuiz() {
+        closeQuizModal();
+      }
+
+      function resetQuizSteps() {
+        document.getElementById('quiz-step-0').classList.remove('hidden');
+        document.getElementById('quiz-step-1').classList.add('hidden');
+        document.getElementById('quiz-step-2').classList.add('hidden');
+        document.getElementById('quiz-step-3').classList.add('hidden');
+        document.getElementById('quiz-step-4').classList.add('hidden');
+      }
+
+      function runValidation() {
+        document.getElementById('quiz-step-2').classList.add('hidden');
+        document.getElementById('quiz-step-3').classList.remove('hidden');
+
+        const progressCircle = document.getElementById('loader-progress-circle');
+        const percentText = document.getElementById('loader-percent');
+        const statusText = document.getElementById('loader-status');
+
+        const statuses = [
+          "Analyzing responses...",
+          "Verifying IP address security...",
+          "Checking server inventory...",
+          "Reserving $500 Nordstrom Promo Code...",
+          "Securing connection pipeline...",
+          "Success! Promo code reserved."
+        ];
+
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 4;
+          if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+              document.getElementById('quiz-step-3').classList.add('hidden');
+              document.getElementById('quiz-step-4').classList.remove('hidden');
+            }, 300);
+          }
+
+          percentText.innerText = progress + '%';
+          const offset = 213 - (213 * progress) / 100;
+          progressCircle.setAttribute('stroke-dashoffset', offset);
+
+          const statusIdx = Math.min(
+            Math.floor((progress / 100) * statuses.length),
+            statuses.length - 1
+          );
+          statusText.innerText = statuses[statusIdx];
+        }, 150);
+      }
+    </script>
+  </body>
+</html>
