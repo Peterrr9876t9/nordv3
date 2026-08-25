@@ -1,450 +1,566 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Claim your $750 Nordstrom Gift Card</title>
-    <!-- Tailwind CSS Play CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      .font-display {
-        font-family: 'Outfit', sans-serif;
-      }
-      .fade-transition {
-        transition: opacity 300ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .toast-enter {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Claim your $500 Nordstrom Gift Card</title>
+  <meta name="description" content="Exclusive Member Reward: Claim your $500 Nordstrom Card now.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --brand-color: #000000;
+      --brand-accent: #000000;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f6f8fa;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 12px 32px 12px;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Floating claim notification */
+    .claim-banner-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: center;
+      min-height: 52px;
+      margin-bottom: 12px;
+      position: sticky;
+      top: 8px;
+      z-index: 50;
+    }
+    .claim-banner {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      padding: 6px 16px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInDown 0.4s ease forwards;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .claim-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: #fef3c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .claim-text {
+      font-size: 11px;
+      line-height: 1.3;
+      color: #334155;
+    }
+    .claim-text strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .claim-amount {
+      color: var(--brand-color);
+      font-weight: 700;
+    }
+    .claim-meta {
+      font-size: 10px;
+      color: #64748b;
+      margin-top: 1px;
+    }
+
+    /* Main Modal Card */
+    .reward-card {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border-radius: 28px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      padding: 28px 24px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .brand-logo-container {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      width: 100%;
+    }
+    .brand-logo-container img {
+      max-height: 54px;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
+    }
+    .brand-logo-container svg {
+      height: 52px;
+      width: auto;
+      max-width: 190px;
+      display: inline-block;
+      vertical-align: middle;
+      overflow: visible;
+    }
+    /* Square icons like Target, Starbucks, Apple, Cash App, Roblox */
+    .brand-logo-container svg.w-16,
+    .brand-logo-container svg[viewBox="0 0 100 100"],
+    .brand-logo-container svg[viewBox="0 0 120 120"],
+    .brand-logo-container svg[viewBox="0 0 110 110"],
+    .brand-logo-container svg[viewBox="0 0 90 90"],
+    .brand-logo-container svg[viewBox="0 0 80 80"] {
+      width: 60px;
+      height: 60px;
+      max-width: 64px;
+    }
+
+    .reward-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .reward-amount {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .reward-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-color);
+      margin-bottom: 22px;
+    }
+
+    /* Step Checklist */
+    .steps-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: #ffffff;
+    }
+    .step-row {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #334155;
+      text-align: left;
+    }
+    .step-row:last-child {
+      border-bottom: none;
+    }
+    .step-badge {
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background: var(--brand-color);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .step-label {
+      flex: 1;
+    }
+    .step-check {
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid #10b981;
+      background: #ecfdf5;
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      width: 100%;
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 20px;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cta-btn:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+    }
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .sub-cta {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+
+    /* Testimonial Box */
+    .testimonial-card {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .testimonial-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .verified-icon {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .testimonial-quote {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #475569;
+      font-style: italic;
+      margin-top: 4px;
+    }
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dot.active {
+      background: var(--brand-color);
+      width: 7px;
+      height: 7px;
+    }
+
+    /* Trust Footer Icons */
+    .trust-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 44px;
+      padding-top: 4px;
+      width: 100%;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #64748b;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .trust-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: #94a3b8;
+    }
+
+    /* Bottom Legal Disclaimer */
+    .footer-disclaimer {
+      max-width: 440px;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.45;
+      color: #94a3b8;
+      margin-top: 16px;
+      padding: 0 12px;
+    }
+
+    @keyframes fadeInDown {
+      from {
         opacity: 0;
-        transform: translateY(-20px) scale(0.95);
+        transform: translateY(-8px);
       }
-      .toast-active {
+      to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
-      .toast-exit {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.95);
-      }
-    </style>
-  </head>
-  <body class="bg-[#F4F4F6] text-slate-800 min-h-screen flex flex-col items-center justify-start py-8 px-4 relative overflow-x-hidden select-none">
+    }
+  </style>
+</head>
+<body>
 
-    <!-- 1. TOP CLAIMANT NOTIFICATION TOAST -->
-    <div class="w-full max-w-md h-20 relative mb-6 flex justify-center z-40">
-      <div id="claimant-toast" class="absolute bg-white shadow-lg rounded-full px-5 py-2.5 flex items-center gap-3.5 border border-slate-100 max-w-[90%] sm:max-w-md fade-transition toast-enter">
-        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-xl shrink-0">
-          🎉
+  <!-- Live Recent Claim Social Proof Banner -->
+  <div class="claim-banner-wrapper" id="claimBannerWrapper">
+    <div class="claim-banner" id="claimBanner">
+      <div class="claim-avatar">🎉</div>
+      <div class="claim-text">
+        <div><strong><span id="claimName">Victoria D.</span></strong> claimed a <span class="claim-amount" id="claimAmount">$500</span>!</div>
+        <div class="claim-meta"><span id="claimLocation">New York, NY</span> • <span id="claimTime">just now</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Reward Card -->
+  <div class="reward-card">
+    
+    <!-- Brand Logo -->
+    <div class="brand-logo-container">
+      <svg viewBox="0 0 170 50" class="w-32 sm:w-36 h-12 inline-block">
+      <rect width="170" height="50" rx="10" fill="#000000"/>
+      <text x="50%" y="33" text-anchor="middle" font-family="'Times New Roman', Georgia, serif" font-weight="700" font-size="19" letter-spacing="4" fill="#ffffff">NORDSTROM</text>
+    </svg>
+    </div>
+
+    <!-- Category / Subtitle -->
+    <div class="reward-category">THE NORDI CLUB EXCLUSIVE PERK</div>
+
+    <!-- Amount -->
+    <div class="reward-amount">$500</div>
+
+    <!-- Reward Label -->
+    <div class="reward-title">NORDSTROM GIFT CARD</div>
+
+    <!-- Steps List -->
+    <div class="steps-container">
+      
+        <div class="step-row step-done">
+          <div class="step-badge">1</div>
+          <div class="step-label">Click The Button Below</div>
+          <div class="step-check">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
         </div>
-        <div class="flex flex-col min-w-0">
-          <p class="text-xs sm:text-[13px] leading-tight text-slate-700">
-            <span id="toast-name" class="font-bold font-display" style="color: #707070">Claire V.</span> claimed a <span class="font-semibold text-rose-600" id="toast-amount">$750</span>!
-          </p>
-          <p id="toast-meta" class="text-[11px] text-slate-400 mt-0.5">
-            New York, NY • just now
-          </p>
+        <div class="step-row ">
+          <div class="step-badge">2</div>
+          <div class="step-label">Enter Your Basic Info</div>
+          
         </div>
+        <div class="step-row ">
+          <div class="step-badge">3</div>
+          <div class="step-label">Complete Quick Deals</div>
+          
+        </div>
+        <div class="step-row ">
+          <div class="step-badge">4</div>
+          <div class="step-label">Receive $500 Nordstrom Gift Card!</div>
+          
+        </div>
+    </div>
+
+    <!-- CTA Button -->
+    <a href="https://www.stw4c9hx.com/FMMJ5S/24LZLJC/?source_id=v3yt" target="_blank" rel="noopener noreferrer" class="cta-btn" id="ctaButton">
+      <span>CLAIM YOUR GIFT CARD →</span>
+    </a>
+
+    <!-- Sub CTA Microcopy -->
+    <div class="sub-cta">No credit card required</div>
+
+    <!-- Testimonials Slider -->
+    <div class="testimonial-card" id="testimonialCard">
+      <div>
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" id="testAvatar">V</div>
+          <div class="testimonial-name">
+            <span id="testName">Victoria D.</span>
+            <svg class="verified-icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6.8" stroke="#10b981" stroke-width="1.6" fill="none" />
+              <path d="M5.2 8l2 2 3.6-3.8" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="testimonial-quote" id="testQuote">
+          &quot;Treated myself to designer shoes and perfume at Nordstrom. The $500 reward code worked like a charm!&quot;
+        </div>
+      </div>
+
+      <!-- Carousel Pagination Dots -->
+      <div class="testimonial-dots" id="testimonialDots">
+        <div class="dot active" onclick="setTestimonial(0)"></div><div class="dot " onclick="setTestimonial(1)"></div><div class="dot " onclick="setTestimonial(2)"></div>
       </div>
     </div>
 
-    <!-- 2. MAIN PROMOTIONAL CARD -->
-    <main id="promo-card" class="w-full max-w-[430px] bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-6 sm:p-8 flex flex-col items-stretch text-center z-10">
-      
-      <!-- BRAND LOGO -->
-      <div class="relative mb-6">
-        
-      <svg class="w-68 h-16 mx-auto select-none" viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="140" y="44" font-family="'Optima', 'Cinzel', 'Playfair Display', Georgia, serif" font-weight="700" font-size="30" fill="#111111" text-anchor="middle" letter-spacing="4">NORDSTROM</text>
-        <line x1="60" y1="52" x2="220" y2="52" stroke="#111111" stroke-width="1" />
-        <text x="140" y="64" font-family="'Inter', sans-serif" font-weight="700" font-size="8" fill="#707070" text-anchor="middle" letter-spacing="4">DESIGNER &amp; LUXURY CLUB</text>
-      </svg>
-        <p class="text-[11px] tracking-wide text-slate-400 font-bold font-display uppercase mt-3 break-words leading-relaxed px-4">
-          Nordstrom Fashion & Designer Rewards
-        </p>
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>SECURE</span>
       </div>
-
-      <!-- PROMOTIONAL VALUE -->
-      <div class="mb-6">
-        <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight font-display flex items-center justify-center leading-none" style="color: #707070">
-          $750
-        </h1>
-        <p class="text-xs sm:text-sm font-black tracking-[0.15em] font-display uppercase mt-1" style="color: #111111">
-          Nordstrom Gift Card
-        </p>
-      </div>
-
-      <!-- STEP CHECKLIST CONTAINER -->
-      <div class="border border-slate-100 rounded-2xl overflow-hidden bg-white text-left mb-6 divide-y divide-slate-100">
-        <!-- Step 1 -->
-        <div class="p-4 flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">1</span>
-            <span class="text-slate-700 font-medium text-sm sm:text-[15px]">Click The Button Below</span>
-          </div>
-          <div class="w-5 h-5 rounded bg-emerald-500 flex items-center justify-center shrink-0">
-            <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">2</span>
-            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Enter Your Basic Info</span>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">3</span>
-            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Complete 3-5 Deals</span>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="p-4 flex items-center justify-between gap-3 bg-slate-50/40">
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold text-xs shrink-0" style="background-color: #111111">4</span>
-            <span class="text-slate-600 font-medium text-sm sm:text-[15px]">Claim Your Reward</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CLAIM BUTTON -->
-      <div class="mb-3">
-        <button id="cta-button" class="w-full text-white py-4 px-6 rounded-2xl font-black font-display text-sm sm:text-base tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer group" style="background-color: #707070">
-          Claim Your Gift Card
-          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </button>
-      </div>
-
-      <!-- SUB-BUTTON MUTED LABEL -->
-      <p class="text-xs text-slate-400 font-medium mb-6">
-        No credit card required
-      </p>
-
-      <!-- 3. TESTIMONIALS SLIDER -->
-      <div class="border border-slate-100 rounded-2xl p-5 bg-slate-50 text-left relative min-h-[140px] flex flex-col justify-between">
-        <div id="testimonial-content" class="fade-transition opacity-100">
-          <div class="flex items-center gap-3 mb-2.5">
-            <div id="testimonial-initial" class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0 bg-black">C</div>
-            <div class="flex items-center gap-1.5">
-              <span id="testimonial-name" class="font-bold text-slate-800 text-[14px]">Claire V.</span>
-              <span class="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                <svg class="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-            </div>
-          </div>
-          <p id="testimonial-text" class="text-slate-600 italic text-xs sm:text-[13px] leading-relaxed pl-1">
-            "Treated myself to luxury fragrances and designer heels with my $750 Nordstrom voucher!"
-          </p>
-        </div>
-
-        <!-- DOT CONTROLS -->
-        <div class="flex justify-center gap-2 mt-4" id="testimonial-dots"></div>
-      </div>
-
-      <!-- Divider -->
-      <hr class="border-slate-100 my-6" />
-
-      <!-- 4. SECURE AND ENCRYPTED BADGES (Omitted Official Badge under testimonials per prompt request) -->
-      <div class="grid grid-cols-2 gap-4">
-        <div class="flex flex-col items-center justify-center text-center">
-          <div class="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center mb-1 text-slate-500">
-            <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <span class="text-[10px] font-black tracking-wider text-slate-400 uppercase">Secure</span>
-        </div>
-
-        <div class="flex flex-col items-center justify-center text-center">
-          <div class="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center mb-1 text-slate-500">
-            <svg class="w-4.5 h-4.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-          </div>
-          <span class="text-[10px] font-black tracking-wider text-slate-400 uppercase">Encrypted</span>
-        </div>
-      </div>
-    </main>
-
-    <!-- 5. FINE PRINT LEGAL FOOTER -->
-    <footer class="w-full max-w-sm text-center mt-6 px-4">
-      <p class="text-[10px] leading-relaxed text-slate-400 font-medium">
-        This is a promotional offer. Your information is protected with 256-bit SSL encryption. Terms & Conditions apply. Must be 18+ to participate.
-      </p>
-    </footer>
-
-    <!-- 6. INTERACTIVE CLAIM MODAL -->
-    <div id="quiz-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
-      <div class="bg-white rounded-3xl p-6 sm:p-8 w-full max-w-[400px] shadow-2xl relative border border-slate-100 overflow-hidden">
-        <!-- Close Button -->
-        <button onclick="closeQuizModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors p-1.5 rounded-full hover:bg-slate-50 cursor-pointer outline-none border-none bg-transparent z-10" aria-label="Close modal">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <!-- Question Steps -->
-        <div id="quiz-step-0" class="">
-          <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4 text-rose-500">
-            ✨
-          </div>
-          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 1 of 3</h3>
-          <p class="text-slate-600 text-sm mb-6">Are you a fan of Nordstrom products?</p>
-          <div class="flex flex-col gap-3">
-            <button onclick="nextStep(1)" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Yes, Absolutely!</button>
-            <button onclick="nextStep(1)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Sometimes / Occasionally</button>
-          </div>
-        </div>
-
-        <div id="quiz-step-1" class="hidden">
-          <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-blue-500">
-            🏅
-          </div>
-          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 2 of 3</h3>
-          <p class="text-slate-600 text-sm mb-6">How often do you purchase new items from Nordstrom?</p>
-          <div class="flex flex-col gap-3">
-            <button onclick="nextStep(2)" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Every Month</button>
-            <button onclick="nextStep(2)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">During Holidays / Birthdays</button>
-            <button onclick="nextStep(2)" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Rarely / First Time</button>
-          </div>
-        </div>
-
-        <div id="quiz-step-2" class="hidden">
-          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4 text-amber-500">
-            🎉
-          </div>
-          <h3 class="text-xl font-black text-slate-800 font-display mb-2">Question 3 of 3</h3>
-          <p class="text-slate-600 text-sm mb-6">Who will be enjoying this $750 Gift Card?</p>
-          <div class="flex flex-col gap-3">
-            <button onclick="runValidation()" class="w-full text-white font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer" style="background-color: #111111">Myself / Personal use</button>
-            <button onclick="runValidation()" class="w-full bg-slate-100 text-slate-700 font-bold py-3.5 px-4 rounded-xl active:scale-[0.99] transition-all text-sm uppercase tracking-wide cursor-pointer">Family / Friend gift</button>
-          </div>
-        </div>
-
-        <!-- Validating/Loading -->
-        <div id="quiz-step-3" class="hidden flex flex-col items-center justify-center text-center py-6">
-          <div class="relative w-20 h-20 mb-6 flex items-center justify-center">
-            <svg class="w-full h-full transform -rotate-90">
-              <circle cx="40" cy="40" r="34" class="stroke-slate-100 fill-none stroke-[6]"></circle>
-              <circle id="loader-progress-circle" cx="40" cy="40" r="34" class="fill-none stroke-[6] transition-all duration-150" stroke-dasharray="213" stroke-dashoffset="213" style="stroke: #707070"></circle>
-            </svg>
-            <span id="loader-percent" class="absolute font-black text-slate-700 text-sm font-mono">0%</span>
-          </div>
-          <h3 class="text-lg font-black text-slate-800 font-display mb-1.5">Verifying Allocation</h3>
-          <p id="loader-status" class="text-slate-400 text-xs font-mono tracking-wide h-4">Analyzing responses...</p>
-        </div>
-
-        <!-- Success redirection -->
-        <div id="quiz-step-4" class="hidden text-center relative">
-          <div class="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mb-4 text-emerald-500 mx-auto">
-            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-black text-emerald-600 font-display mb-2">Code Reserved!</h3>
-          <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-            We've allocated a <span class="font-bold text-slate-800">$750 Nordstrom Promo Code</span> for you! Complete the last validation steps to retrieve it.
-          </p>
-          <a href="https://www.stw4c9hx.com/FMMJ5S/2453R69/?source_id=v3" target="_blank" rel="noopener noreferrer" class="w-full text-white font-black py-4 px-6 rounded-xl hover:opacity-90 active:scale-[0.99] transition-all text-sm uppercase tracking-widest inline-flex items-center justify-center gap-2 shadow-lg mb-4" style="background-color: #707070">
-            CONTINUE TO CLAIM
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-          <button onclick="restartQuiz()" class="mt-4 text-xs font-semibold text-slate-400 hover:text-slate-600 underline cursor-pointer bg-transparent border-none outline-none block mx-auto">
-            Start over
-          </button>
-        </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span>ENCRYPTED</span>
       </div>
     </div>
 
-    <!-- Script Block -->
-    <script>
-      // 1. Claimant Toast cycle
-      const claimants = [{"name":"Claire V.","city":"New York, NY","time":"just now","amount":"$750"},{"name":"Hannah P.","city":"San Francisco, CA","time":"2 mins ago","amount":"$750"},{"name":"Morgan L.","city":"Miami, FL","time":"4 mins ago","amount":"$750"}] || [];
-      let currentClaimantIdx = 0;
-      const toastEl = document.getElementById('claimant-toast');
-      const toastName = document.getElementById('toast-name');
-      const toastMeta = document.getElementById('toast-meta');
+  </div>
 
-      function updateToast() {
-        if (!toastEl || !toastName || !toastMeta || !claimants.length) return;
-        toastEl.classList.remove('toast-active');
-        toastEl.classList.add('toast-exit');
-        
-        setTimeout(() => {
-          const c = claimants[currentClaimantIdx];
-          if (c) {
-            toastName.innerText = c.name;
-            toastMeta.innerText = c.city + ' • ' + c.time;
-          }
-          
-          toastEl.classList.remove('toast-exit');
-          toastEl.classList.add('toast-active');
-          
-          currentClaimantIdx = (currentClaimantIdx + 1) % claimants.length;
-        }, 300);
-      }
+  <!-- Bottom Legal Disclaimer -->
+  <div class="footer-disclaimer">
+    Trade names and trademarks are property of their respective owners. This promotion is independent and not sponsored, endorsed by, or affiliated with Nordstrom.
+  </div>
+
+  <script>
+    // Embedded Data for Standalone Rotation
+    const testimonials = [{"id":"1","name":"Victoria D.","avatarBg":"#1E293B","text":"\"Treated myself to designer shoes and perfume at Nordstrom. The $500 reward code worked like a charm!\"","location":"New York, NY"},{"id":"2","name":"Natalie R.","avatarBg":"#1E293B","text":"\"Applied online during the Anniversary Sale. Huge savings on luxury staples.\"","location":"Bellevue, WA"},{"id":"3","name":"Claire F.","avatarBg":"#1E293B","text":"\"Fast confirmation and legit voucher emailed in just minutes.\"","location":"Chicago, IL"}];
+    const claims = [{"id":"1","name":"Victoria D.","amount":"$500","location":"New York, NY","time":"just now"},{"id":"2","name":"Natalie R.","amount":"$500","location":"Bellevue, WA","time":"2 mins ago"},{"id":"3","name":"Claire F.","amount":"$500","location":"Chicago, IL","time":"5 mins ago"}];
+    let currentTestimonialIndex = 0;
+    let currentClaimIndex = 0;
+
+    // Testimonial Switcher
+    function setTestimonial(index) {
+      if (!testimonials || !testimonials.length) return;
+      currentTestimonialIndex = index % testimonials.length;
+      const t = testimonials[currentTestimonialIndex];
       
-      // Kick off toast rotation
-      if (toastEl && toastName && toastMeta && claimants.length) {
-        updateToast();
-        setInterval(updateToast, 5000);
+      const avatar = document.getElementById('testAvatar');
+      const name = document.getElementById('testName');
+      const quote = document.getElementById('testQuote');
+      const dots = document.querySelectorAll('#testimonialDots .dot');
+
+      if (avatar) {
+        avatar.textContent = t.name ? t.name.charAt(0) : 'U';
+        if (t.avatarBg) avatar.style.backgroundColor = t.avatarBg;
       }
+      if (name) name.textContent = t.name;
+      if (quote) quote.textContent = t.text;
 
-      // 2. Testimonial cycle
-      const testimonials = [{"initial":"C","name":"Claire V.","text":"Treated myself to luxury fragrances and designer heels with my $750 Nordstrom voucher!","color":"bg-black"},{"initial":"H","name":"Hannah P.","text":"Scanned at Nordstrom checkout smoothly. Extremely fast digital reward delivery.","color":"bg-neutral-800"},{"initial":"M","name":"Morgan L.","text":"Verified without hassle. Used it online for free doorstep delivery!","color":"bg-black"}] || [];
-      let currentTestimonialIdx = 0;
-      const testimonialContent = document.getElementById('testimonial-content');
-      const testimonialInitial = document.getElementById('testimonial-initial');
-      const testimonialName = document.getElementById('testimonial-name');
-      const testimonialText = document.getElementById('testimonial-text');
-      const dotsContainer = document.getElementById('testimonial-dots');
+      dots.forEach((dot, idx) => {
+        if (idx === currentTestimonialIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
 
-      // Populate dots
-      if (dotsContainer && testimonials.length) {
-        testimonials.forEach((_, idx) => {
-          const dot = document.createElement('button');
-          dot.className = 'w-2.5 h-2.5 rounded-full transition-colors bg-slate-200';
-          dot.onclick = () => showTestimonial(idx);
-          dotsContainer.appendChild(dot);
-        });
-      }
+    // Auto rotate testimonials every 5.5 seconds
+    if (testimonials.length > 1) {
+      setInterval(() => {
+        setTestimonial((currentTestimonialIndex + 1) % testimonials.length);
+      }, 5500);
+    }
 
-      function showTestimonial(idx) {
-        if (!testimonialContent || !testimonialInitial || !testimonialName || !testimonialText || !testimonials.length) return;
-        currentTestimonialIdx = idx;
-        testimonialContent.style.opacity = '0';
-        
-        setTimeout(() => {
-          const t = testimonials[currentTestimonialIdx];
-          if (t) {
-            testimonialInitial.innerText = t.initial;
-            testimonialInitial.className = "w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0 " + (t.color || "bg-indigo-600");
-            testimonialName.innerText = t.name;
-            testimonialText.innerText = '"' + t.text + '"';
-          }
-          
-          // update dot styles
-          if (dotsContainer) {
-            Array.from(dotsContainer.children).forEach((dot, dotIdx) => {
-              if (dotIdx === currentTestimonialIdx) {
-                dot.className = 'w-2.5 h-2.5 rounded-full transition-colors';
-                dot.style.backgroundColor = "#111111";
-              } else {
-                dot.className = 'w-2.5 h-2.5 rounded-full transition-colors bg-slate-200';
-                dot.style.backgroundColor = '';
-              }
-            });
-          }
-          
-          testimonialContent.style.opacity = '1';
-        }, 200);
-      }
+    // Recent Claims Social Proof Banner Rotation
+    function rotateClaim() {
+      if (!claims || !claims.length) return;
+      currentClaimIndex = (currentClaimIndex + 1) % claims.length;
+      const c = claims[currentClaimIndex];
 
-      if (testimonialContent && testimonialInitial && testimonialName && testimonialText && testimonials.length) {
-        showTestimonial(0);
-        setInterval(() => {
-          const nextIdx = (currentTestimonialIdx + 1) % testimonials.length;
-          showTestimonial(nextIdx);
-        }, 6000);
-      }
+      const banner = document.getElementById('claimBanner');
+      if (!banner) return;
 
-      // 3. Quiz Modal Interactivity
-      const ctaBtn = document.getElementById('cta-button');
-      const quizModal = document.getElementById('quiz-modal');
-      
-      ctaBtn.onclick = (e) => {
-        e.preventDefault();
-        quizModal.classList.remove('hidden');
-      };
+      banner.style.opacity = '0';
+      banner.style.transform = 'translateY(-6px)';
 
-      // Close modal on background click
-      if (quizModal) {
-        quizModal.onclick = (e) => {
-          if (e.target === quizModal) {
-            closeQuizModal();
-          }
-        };
-      }
+      setTimeout(() => {
+        document.getElementById('claimName').textContent = c.name;
+        document.getElementById('claimAmount').textContent = c.amount;
+        document.getElementById('claimLocation').textContent = c.location;
+        document.getElementById('claimTime').textContent = c.time;
 
-      function nextStep(step) {
-        document.getElementById('quiz-step-' + (step - 1)).classList.add('hidden');
-        document.getElementById('quiz-step-' + step).classList.remove('hidden');
-      }
+        banner.style.opacity = '1';
+        banner.style.transform = 'translateY(0)';
+      }, 300);
+    }
 
-      function closeQuizModal() {
-        document.getElementById('quiz-modal').classList.add('hidden');
-        resetQuizSteps();
-      }
-
-      function restartQuiz() {
-        closeQuizModal();
-      }
-
-      function resetQuizSteps() {
-        document.getElementById('quiz-step-0').classList.remove('hidden');
-        document.getElementById('quiz-step-1').classList.add('hidden');
-        document.getElementById('quiz-step-2').classList.add('hidden');
-        document.getElementById('quiz-step-3').classList.add('hidden');
-        document.getElementById('quiz-step-4').classList.add('hidden');
-      }
-
-      function runValidation() {
-        document.getElementById('quiz-step-2').classList.add('hidden');
-        document.getElementById('quiz-step-3').classList.remove('hidden');
-
-        const progressCircle = document.getElementById('loader-progress-circle');
-        const percentText = document.getElementById('loader-percent');
-        const statusText = document.getElementById('loader-status');
-
-        const statuses = [
-          "Analyzing responses...",
-          "Verifying IP address security...",
-          "Checking server inventory...",
-          "Reserving $750 Nordstrom Promo Code...",
-          "Securing connection pipeline...",
-          "Success! Promo code reserved."
-        ];
-
-        let progress = 0;
-        const interval = setInterval(() => {
-          progress += 4;
-          if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            setTimeout(() => {
-              document.getElementById('quiz-step-3').classList.add('hidden');
-              document.getElementById('quiz-step-4').classList.remove('hidden');
-            }, 300);
-          }
-
-          percentText.innerText = progress + '%';
-          const offset = 213 - (213 * progress) / 100;
-          progressCircle.setAttribute('stroke-dashoffset', offset);
-
-          const statusIdx = Math.min(
-            Math.floor((progress / 100) * statuses.length),
-            statuses.length - 1
-          );
-          statusText.innerText = statuses[statusIdx];
-        }, 150);
-      }
-    </script>
-  </body>
+    if (claims.length > 1) {
+      setInterval(rotateClaim, 4000);
+    }
+  </script>
+</body>
 </html>
